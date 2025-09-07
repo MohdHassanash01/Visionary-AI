@@ -8,7 +8,8 @@ import Result from "./pages/ImageGenerate"
 
 import { Route, Routes } from "react-router-dom"
 import { AppContext } from "./context/AppContext"
-import Profile from "./pages/profile"
+import Profile from "./pages/Profile"
+
 
 function App() {
 
