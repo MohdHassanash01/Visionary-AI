@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { useContext, useEffect, useState, type FormEvent } from "react";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
   const backendUrl  = import.meta.env.VITE_BACKEND_URL
 
@@ -69,6 +70,7 @@ export default function Auth() {
 
           setSuccess("Login successful!");
          setShowLogin(false)
+         toast.success(data.message)
         }
 
       } else {
@@ -80,7 +82,7 @@ export default function Auth() {
           password
         });
 
-        console.log(data);
+        console.log("signup : ",data);
         
 
         if (data.success) {
@@ -103,6 +105,7 @@ export default function Auth() {
 
      setSuccess("Login successful!");
       setShowLogin(false)
+      toast.success(data.message)
 
         }
       }
