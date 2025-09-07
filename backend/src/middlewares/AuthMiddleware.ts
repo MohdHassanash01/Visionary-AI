@@ -3,10 +3,10 @@
 import { NextFunction, Request, Response } from "express"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
-import { log } from "node:console"
+
 dotenv.config()
 
-const JWT_SECRET_USER = process.env.jwt_secret
+const JWT_SECRET_USER = process.env.JWT_SECRET
 // console.log("usermiddle",JWT_SECRET_USER)
 
 if (!JWT_SECRET_USER) {
