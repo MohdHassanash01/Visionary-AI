@@ -50,6 +50,9 @@ function AppContextProvider({ children }: { children: ReactNode }) {
 
  async function loadCreditsData(){
 
+   const token = localStorage.getItem("token")   // ✅ fresh read yahan
+    if (!token) return
+
   try {
     
     const {data} = await axios.get(`${backendUrl}/credits`,
@@ -86,6 +89,7 @@ function AppContextProvider({ children }: { children: ReactNode }) {
       console.error("Failed to parse user from localStorage", e);
     }
   }
+  loadCreditsData()
   },[])
 
 
@@ -98,7 +102,11 @@ function AppContextProvider({ children }: { children: ReactNode }) {
   },[token])
 
 
- 
+  useEffect(() => {
+    if (user) {
+      loadCreditsData()   // ✅ jab login/signup ke baad user set ho, tabhi bhi refetch
+    }
+  },[user])
   
 
   return (
